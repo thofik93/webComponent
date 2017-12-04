@@ -11,6 +11,10 @@
   <body>
     <h3>Component Maps Demo</h3>
     <div id="map"></div>
+    <p>
+      <button type="button" id="ZoomIn">ZoomIn Map</button>
+      &nbsp;<button type="button" id="ZoomOut">ZoomOut Map</button>
+    </p>
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjBAhmeLFs9EDjG8VrrwzrEiuAlBhoeKk">
     </script>
@@ -266,7 +270,22 @@
        })
 
        var googMap = Map.initMap()
-       
+
+       var marker = googMap.marker
+       var map = googMap.map
+       var zoom = googMap.zoom
+
+       marker.addListener('click', function(){
+        alert('this is pointer, zoom:' + zoom)
+       })
+
+       document.getElementById('ZoomIn').addEventListener('click', function(){
+        map.setZoom(++zoom)
+       })
+
+       document.getElementById('ZoomOut').addEventListener('click', function(){
+        map.setZoom(--zoom)
+       })
       }
     </script>
   </body>

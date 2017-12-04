@@ -7,7 +7,7 @@ var Map = (function(){
 	var lat = -25.363, 
 			lng = 131.044, 
 			zoom = 8, 
-			styles = [], 
+			styles = [],
 			el
 	/*
 		end public property 
