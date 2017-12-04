@@ -20,10 +20,10 @@ var Map = (function(){
 		el = element
 		
 		if(!!settings) {
-			lat = settings.lat
-			lng = settings.lng
-			styles = settings.styles
-			zoom = settings.zoom
+			lat = settings.lat || lat
+			lng = settings.lng || lng
+			styles = settings.styles || styles
+			zoom = settings.zoom || zoom
 		}
 
 	}
