@@ -2,60 +2,60 @@ var Map = (function(){
 	'use strict'
 	
 	/*
-		Public property 
+		Default property 
 	 */
-	var lat = -25.363, 
-			lng = 131.044, 
-			zoom = 8, 
-			styles = [],
-			el
+	var marker,
+      map,
+			el,
+      position = { lat: -25.363, lng: 131.044 };
 	/*
-		end public property 
+		End Default property 
 	 */
 
-	function config(element, settings) {
-		
-		if (typeof element === 'undefined') throw new Error('Element required')
+	function initMap (element, settings) {
 
-		el = element
-		
-		if(!!settings) {
-			lat = settings.lat || lat
-			lng = settings.lng || lng
-			styles = settings.styles || styles
-			zoom = settings.zoom || zoom
-		}
+    if (typeof element === 'undefined') throw new Error('Element required')
 
-	}
-	
-	function initMap() {
-	  var position = {lat: lat, lng: lng}
-	 	var map = new google.maps.Map(el, {
-      zoom: zoom,
-      center: position,
-      styles: styles
-	  });
+    el = element
+    
+    if(!!settings) {
 
-	 var marker = new google.maps.Marker({
-	    position: position,
-	    map: map
-	  });
+      var DEFAULTS = {
+        center: position,
+        zoom: 8
+      }
+
+      var options = Object.assign(DEFAULTS, settings || {})
+
+    } 
+    else {
+      throw new Error('You must defined settings as second argument')
+    }
+
+	 	map = new google.maps.Map(el, options)
 
 	 	return {
 	 		map: map,
-	 		marker: marker,
-	 		zoom: zoom,
-	 		lat: lat,
-	 		lng: lng
+	 		zoom: map.getZoom(),
+      setMarker: function(settings) {
+        
+        var DEFAULTS = {
+          map: map,
+          position: position
+        }
+
+        var options = Object.assign(DEFAULTS, settings || {})
+
+        marker = new google.maps.Marker(options)
+
+        return marker;
+      }
 	 	}
 	}
 
 	return {
-		config: function(el, settings) {
-			return config(el, settings)
-		},
-		initMap: function() {
-			return initMap()
+		init: function(el, settings) {
+			return initMap(el, settings)
 		}
 	}
 })();
