@@ -15,7 +15,7 @@ var Map = (function(){
 	function initMap (element, settings) {
 
     if (typeof element === 'undefined') throw new Error('Element required')
-
+    
     el = element
     
     if(!!settings) {

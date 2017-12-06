@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <style>
+       .btn {
+        display: inline-flex;
+        min-width: 180px;
+        padding: 8px 16px;
+        background-color: #eaeaea;
+        border: 1px solid #f5f5f5;
+        outline: none;
+        box-shadow: none;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+       }
+       .btn:hover {
+        background-color: #d7d7d7;
+        cursor: pointer;
+        transition: background .3s ease-in-out;
+       }
+       .btn.is-loading:before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 99;
+        background-color: rgba(0, 0, 0, 0.4);
+       }
+       .btn.is-loading:after {
+        content: " ";
+        display: inline-block;
+        background-image: url("images/loading.gif");
+        height: 30px;
+        width: 30px;
+        left: 0;
+        right: 0;
+        top: 0;
+        left: 0;
+        margin: 0 auto;
+        position: absolute;
+        background-size: cover;
+        z-index: 100;
+       }
+       .btn.is-loading {
+        pointer-events: none;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Module Button</h3>
+    <button type="button" class="btn">Click Me!</button>
+    <hr />
+    <a href="#" id="setLoading">set loading</a>
+    <a href="#" id="stop">stop</a>
+    <script type="text/javascript" src="button.js"></script>
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <script type="text/javascript">
+      var btn = Button.init(document.querySelectorAll('button'))
+
+      document.getElementById('setLoading')
+        .addEventListener('click', function(e){
+          e.preventDefault()
+          btn.setLoading()
+          btn.$el.addClass('done')
+        });
+
+      document.getElementById('stop')
+        .addEventListener('click', function(e){
+          e.preventDefault()
+          btn.stop()
+        });
+    </script>
+  </body>
+</html>
