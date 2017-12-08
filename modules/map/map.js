@@ -1,6 +1,7 @@
-var Map = (function(){
+var qdh = (function(qdh){
 	'use strict'
-	
+	 
+  var Map = qdh.map = qdh.map || {}
 	/*
 		Default property 
 	 */
@@ -12,7 +13,7 @@ var Map = (function(){
 		End Default property 
 	 */
 
-	function initMap (element, settings) {
+	Map.init = function (element, settings) {
 
     if (typeof element === 'undefined') throw new Error('Element required')
     
@@ -53,9 +54,5 @@ var Map = (function(){
 	 	}
 	}
 
-	return {
-		init: function(el, settings) {
-			return initMap(el, settings)
-		}
-	}
-})();
+	return qdh
+})(qdh || {});

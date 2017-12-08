@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>QDH</title>
     <style>
        .btn {
         display: inline-flex;
@@ -48,39 +48,62 @@
        .btn.is-loading {
         pointer-events: none;
        }
+
+       #map, #map2 {
+        height: 400px;
+        width: 100%;
+       }
     </style>
   </head>
   <body>
     <h3>Module Button</h3>
     
     <button type="button" class="btn" id="normalButton">Button 1</button>
-    <button type="button" class="btn" id="normalButtonTwo">Button 2</button>
+    <button type="button" class="btn" id="normalButton2">Button 2</button>
+    <button type="button" class="btn" id="normalButton3">Button 3</button>
+    
+    <hr />
+
+    <a href="#" id="setLoading">set All loading</a>
+    <a href="#" id="stop">stop All</a>
 
     <hr />
+
+    <h3>Module Maps Demo</h3>
+    <div id="map"></div>
     
-    <a href="#" id="setLoading">set loading</a>
-    <a href="#" id="stop">stop</a>
-    
-    <script type="text/javascript" src="button.js"></script>
-    <script type="text/javascript" src="buttonDropdown.js"></script>
-    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <p id="p"></p>
+    <p>
+      <button type="button" id="ZoomIn">ZoomIn Map</button>
+      &nbsp;<button type="button" id="ZoomOut">ZoomOut Map</button>
+    </p>
+    <div id="map2"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjBAhmeLFs9EDjG8VrrwzrEiuAlBhoeKk"></script>
+
+    <script type="text/javascript" src="../dist/web-component.js"></script>
+    <script type="text/javascript" src="map/main.js"></script>
     <script type="text/javascript">
-      var btn   = new qdh.button.Init(document.querySelectorAll('#normalButton'))
-      var btn2  = new qdh.button.Init($('#normalButtonTwo'))
 
-      document.getElementById('setLoading')
-        .addEventListener('click', function(e){
-          e.preventDefault()
+      $( document ).ready(function() {
+        var btn2 = qdh.buttonDropdown.setDropdown()
+        var allBtn = new qdh.button.Init($('.btn'))
+
+        $('.btn').on('click', function() {
+          var btn = new qdh.button.Init($(this))
           btn.setLoading()
-          btn.$el.addClass('done')
-        });
+        })
 
-      document.getElementById('stop')
-        .addEventListener('click', function(e){
-          e.preventDefault()
-          btn.stop()
-        });
+        $('#stop').on('click', function() {
+          allBtn.stop()
+        })
 
+        $('#setLoading').on('click', function(){
+          allBtn.setLoading()
+        });
+      })
+
+      
     </script>
+    
   </body>
 </html>

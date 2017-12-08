@@ -6,7 +6,7 @@ var arrPosition = [
 
 window.onload = function() {
 
-  var googMap = Map.init(document.getElementById('map'), {
+  var googMap = qdh.map.init(document.getElementById('map'), {
     center: arrPosition[0],
     zoom: 14,
     scrollwheel: false,
@@ -276,7 +276,7 @@ window.onload = function() {
     map.setZoom(--zoom)
   })
 
-  var googMap2 = Map.init(document.getElementById('map2'), {
+  var googMap2 = qdh.map.init(document.getElementById('map2'), {
     zoom: 14,
     center: arrPosition[2]
   })

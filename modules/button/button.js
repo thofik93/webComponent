@@ -1,28 +1,24 @@
-var Button = (function(){
-  'use strict'
+var qdh = (function(qdh){
+  "use strict"
 
-  var el,
-      loadingClassName = 'is-loading'
+  var button = qdh.button = qdh.button || {}
+
+  var loadingClassName = "is-loading"
   
-  function initButton(element) {
-    
-    el = element instanceof jQuery ? element : $(element)
-
-    return {
-      setLoading: function() {
-        return el.addClass(loadingClassName)
-      },
-      stop: function() {
-       return  el.removeClass(loadingClassName)
-      }
-      $el: el
-    }
+  button.Init = function(element) {
+    this.$el        = element instanceof jQuery ? element : $(element)
+    this.setLoading = _setLoading
+    this.stop       = _stop
   }
 
-  return {
-    init: function(el) {
-      return initButton(el)
-    }
+  function _setLoading() {
+    return this.$el.addClass(loadingClassName)
   }
 
-})();
+  function _stop() {
+    return this.$el.removeClass(loadingClassName)
+  }
+
+  return qdh
+
+})(qdh || {});

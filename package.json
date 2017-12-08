@@ -1,0 +1,27 @@
+{
+  "name": "web-component-master",
+  "version": "1.0.0",
+  "description": "module pattern for qdh project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thofik93/webComponent.git"
+  },
+  "keywords": [
+    "nodule",
+    "pattern"
+  ],
+  "author": "thofik wiranata - thofikwiranata.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thofik93/webComponent/issues"
+  },
+  "homepage": "https://github.com/thofik93/webComponent#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1"
+  }
+}
